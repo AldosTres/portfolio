@@ -1,4 +1,5 @@
 <x-layouts.app title="Inicio">
+    @include('partials.hero')
     <section class="text-center mt-10">
         <h2 class="text-3xl font-bold mb-4">Hola, soy Aldo 👋</h2>
         <p class="text-neutral-400 max-w-xl mx-auto">
