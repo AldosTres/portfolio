@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -7,39 +7,51 @@
     <title>{{ $title ?? 'Mi Portfolio' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script src="https://kit.fontawesome.com/d10a6cd004.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-neutral-950 text-neutral-200 transition-colors duration-300">
+<body
+    class="bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
 
-    {{-- Navbar --}}
-    <nav class="w-full py-4 flex justify-between items-center px-6 border-b border-neutral-800">
-        <h1 class="font-semibold tracking-tight text-lg">Mi Portafolio</h1>
+    <nav
+        class="w-full py-4 flex justify-between items-center px-6
+               border-b border-neutral-200 dark:border-neutral-800">
 
-        {{-- Toggle dark mode --}}
-        <button id="themeToggle"
-            class="px-3 py-1 border border-neutral-700 rounded-md text-sm hover:bg-neutral-800 transition">
+        <h1 class="font-semibold tracking-tight text-lg">
+            Mi Portafolio
+        </h1>
+
+        <button id="cambiarTema"
+            class="px-3 py-1 text-sm rounded-md border
+                   border-neutral-300 dark:border-neutral-700
+                   hover:bg-neutral-100 dark:hover:bg-neutral-800
+                   transition">
             Modo
         </button>
     </nav>
 
-    {{-- Contenido de las vistas --}}
     <main class="max-w-4xl mx-auto p-6">
         {{ $slot }}
     </main>
 
     <script>
-        const btn = document.getElementById("themeToggle");
+        const btn = document.getElementById("cambiarTema");
         const html = document.documentElement;
+
+        // Estado inicial
+        if (localStorage.getItem("theme") === "dark") {
+            html.classList.add("dark");
+        }
 
         btn.addEventListener("click", () => {
             html.classList.toggle("dark");
-            localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
-        });
 
-        if (localStorage.getItem("theme") === "light") {
-            html.classList.remove("dark");
-        }
+            const theme = html.classList.contains("dark") ? "dark" : "light";
+            localStorage.setItem("theme", theme);
+        });
     </script>
+
 
 </body>
 

@@ -1,10 +1,13 @@
+console.log("TAILWIND CONFIG CARGADO");
+
 export default {
-  content: [
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+    darkMode: 'class',
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+}
